@@ -1,7 +1,7 @@
 #include <bits/stdc++.h> 
 void setZeros(vector<vector<int>> &matrix)
 {
-	int n= matrix.size();
+    int n= matrix.size();
     int m=matrix[0].size();
     int col=1;
     
