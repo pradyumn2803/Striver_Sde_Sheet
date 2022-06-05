@@ -16,4 +16,23 @@ long long maxSubarraySum(int arr[], int n)
         if(sum<0) sum=0;
     }
     return maxi;
+
+    /*
+    // to print subarray
+    sum=0;
+    for(int i=0;i<n;i++)
+    {
+        sum+=arr[i];
+        if(sum>0 && sum<=maxi)
+        {
+            cout<<arr[i]<<" ";
+        }
+        else sum=0;
+        if(sum==maxi) break;
+    }
+    
+    
+    
+    
+    */
 }
