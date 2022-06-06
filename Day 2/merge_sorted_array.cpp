@@ -1,3 +1,32 @@
+// Approach 1
+
+vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, int n) {
+	// Write your code here.
+	int i=0;
+	if(m==0) return arr2;
+	if(n!=0)
+	{
+		while(i<m)
+		{
+			if(arr1[i]>arr2[0])
+			{
+				swap(arr1[i],arr2[0]);
+				sort(arr2.begin(),arr2.end());
+			}
+			i++;
+		}
+		
+	}
+	int j=0;
+	while(i<m+n)
+	{
+		arr1[i++]=arr2[j++];
+	}
+	
+	return arr1;
+}
+
+//Approach 2 Gap Method
 int next_gap(int n)
 {
     if(n<=1) return 0;
