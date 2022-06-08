@@ -18,6 +18,7 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
         }
         else
         {
+            int counter;
             if(arr[left]==arr[right])
             {
                 int cnt=0;
@@ -28,24 +29,7 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
                         cnt++;
                     }
                 }
-                cnt=(cnt*(cnt-1))/2;
-                vector<int> v(2,0);
-                while(cnt)
-                {
-                    
-                    v[0]=arr[left];
-                    v[1]=arr[right];
-                    ans.push_back(v);
-                    cnt--;
-                }
-               while(left<right && arr[left]==v[0]) 
-               {
-                     left++;
-                }
-               while(left<right && arr[right]==v[1]) 
-               {
-                     right--;
-               }
+                counter=(cnt*(cnt-1))/2;
             }
             else
             {
@@ -62,24 +46,23 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
                     }
                     
                 }
-                int cnt=cnt1*cnt2;
-                vector<int> v(2,0);
-                while(cnt)
-                {
-                    
-                    v[0]=arr[left];
-                    v[1]=arr[right];
-                    ans.push_back(v);
-                    cnt--;
-                }
-                while(left<right && arr[left]==v[0]) 
-                {
-                     left++;
-                 }
-                  while(left<right && arr[right]==v[1]) 
-                  {
-                     right--;
-                  }
+                counter=cnt1*cnt2;
+            }
+            vector<int> v(2,0);
+            while(counter)
+            { 
+                v[0]=arr[left];
+                v[1]=arr[right];
+                ans.push_back(v);
+                counter--;
+             }
+             while(left<right && arr[left]==v[0]) 
+              {
+                   left++;
+              }
+              while(left<right && arr[right]==v[1]) 
+              {
+                   right--;
               }
           }
        }
