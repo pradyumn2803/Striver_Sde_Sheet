@@ -1,6 +1,6 @@
-#include<set>
+#include<unordered_set>
 int lengthOfLongestConsecutiveSequence(vector<int> &arr, int n) {
-    set<int> hsh;
+    unordered_set<int> hsh;
     for(int i=0;i<n;i++)
     {
         hsh.insert(arr[i]);
