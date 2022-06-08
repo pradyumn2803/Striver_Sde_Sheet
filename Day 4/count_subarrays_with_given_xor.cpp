@@ -9,10 +9,10 @@ int subarraysXor(vector<int> &arr, int x)
         ans^=arr[i];
         
         if(ans==x) cnt++;
-         if(mp.find(ans^x)!=mp.end())
-         {
+        if(mp.find(ans^x)!=mp.end())
+        {
             cnt+=mp[ans^x];
-         }
+        }
         mp[ans]+=1;
     }
     return cnt;
