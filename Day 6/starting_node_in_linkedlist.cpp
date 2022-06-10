@@ -6,13 +6,13 @@
         class Node
         {
         public:
-	        int data;
-	        Node *next;
-	        Node(int data)
-	        {
-		        this->data = data;
-		        this->next = NULL;
-	        }
+            int data;
+            Node *next;
+            Node(int data)
+            {
+                this->data = data;
+                this->next = NULL;
+            }
         };
 
 *****************************************************************/
@@ -20,21 +20,25 @@
 Node *firstNode(Node *head)
 {
     if(head==NULL || head->next==NULL) return NULL;
-    Node* f=head;
-    Node* s=head;
+    Node* fast=head;
+    Node* slow=head;
+    Node* entry=head;
     
-    do
+    while(fast && fast->next)
     {
-        f=f->next->next;
-        s=s->next;
-    }while(f!=s && f && s && f->next);
-
-    f=head;
-    while(f!=s && f && s)
-    {
-        f=f->next;
-        s=s->next;
+        fast=fast->next->next;
+        slow=slow->next;
+        
+        if(slow==fast)
+        {
+            while(entry!=slow)
+            {
+                entry=entry->next;
+                slow=slow->next;
+            }
+            return entry;
+        }
     }
+    return NULL;
     
-    return s;
 }
