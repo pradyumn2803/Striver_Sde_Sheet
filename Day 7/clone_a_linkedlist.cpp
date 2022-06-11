@@ -49,11 +49,10 @@ LinkedListNode<int> *cloneRandomList(LinkedListNode<int> *head)
     LinkedListNode<int>* t=d;
     
     LinkedListNode<int>* iter=head;
-    LinkedListNode<int>* front=head;
-    
+
     while(iter!=NULL)
     {
-        front=iter->next->next;
+        LinkedListNode<int>* front=iter->next->next;
         t->next=iter->next;
         iter->next=front;
         t=t->next;
