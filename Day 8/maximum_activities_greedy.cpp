@@ -1,9 +1,9 @@
 #include<algorithm>
-struct meeting
+struct activity
 {
 	int start,end,pos;	
 };
-bool comp(meeting m1,meeting m2)
+bool comp(activity m1,activity m2)
 {
 	if(m1.end>m2.end) return false;
 	if(m1.end<m2.end) return true;
@@ -11,25 +11,25 @@ bool comp(meeting m1,meeting m2)
 }
 int maximumActivities(vector<int> &s, vector<int> &f) {
     int n=s.size();
-	meeting meet[n];
+	activity a[n];
 	for(int i=0;i<n;i++)
 	{
-		meet[i].start=s[i];
-		meet[i].end=f[i];
-		meet[i].pos=i+1;
+		a[i].start=s[i];
+		a[i].end=f[i];
+		a[i].pos=i+1;
 	}
 	
-	sort(meet,meet+n,comp);
+	sort(a,a+n,comp);
 	
 	int cnt=1;
-	int finish=meet[0].end;
+	int finish=a[0].end;
 	
 	for(int i=1;i<n;i++)
 	{
-		if(meet[i].start>=finish)
+		if(a[i].start>=finish)
 		{
 			cnt++;
-			finish=meet[i].end;
+			finish=a[i].end;
 		}
 	}
 	return cnt;
