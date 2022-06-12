@@ -1,33 +1,16 @@
-#include<algorithm>
-bool cmp(pair<int, int>& a,pair<int, int>& b )
+int findMinimumCoins(int amount) 
 {
-    double r1=(double)a.second/(double)a.first;
-    double r2=(double)b.second/(double)b.first;
-    return r1>r2;
-}
-
-double maximumValue (vector<pair<int, int>>& items, int n, int w)
-{
-    // Write your code here.
-    // ITEMS contains {weight, value} pairs.
-    sort(items.begin(),items.end(),cmp);
-    
-    double ans=0.0;
-    int cur_weight=0;
-    
-    for(int i=0;i<n;i++)
-    {
-        if(cur_weight+items[i].first<=w)
-        {
-            ans+=items[i].second;
-            cur_weight+=items[i].first;
-        }
-        else
-        {
-            int rem=w-cur_weight;
-            ans+=(((double)items[i].second/(double)items[i].first)*rem);
-            break;
-        }
-    }
-    return ans;
+    int amt[]={1,2,5,10,20,50,100,500,1000};
+	int cnt=0;
+	int i=sizeof(amt)/sizeof(amt[0])-1;
+	while(i>=0)
+	{
+		while(amount>=amt[i])
+		{
+			cnt++;
+			amount-=amt[i];
+		}
+		i--;
+	}
+	return cnt;
 }
