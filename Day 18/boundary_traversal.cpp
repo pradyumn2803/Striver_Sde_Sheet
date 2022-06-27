@@ -43,16 +43,16 @@ void LeftTraversal(TreeNode<int>* root,vector<int> &res)
 void RightTraversal(TreeNode<int>* root,vector<int> &res)
 {
     TreeNode<int>* cur=root->right;
-    vector<int> temp;
+    int i=0;
     while(cur)
     {
-        if(!(leaf(cur))) temp.push_back(cur->data);
+        if(!(leaf(cur))) 
+        {
+            res.insert(res.end()-i,cur->data);
+            i++;
+        }
         if(cur->right) cur=cur->right;
         else cur=cur->left;
-    }
-    for(int i=temp.size()-1;i>=0;i--)
-    {
-        res.push_back(temp[i]);
     }
 }
 
