@@ -23,6 +23,20 @@
     };
 
 ************************************************************/
+// iterative
+// TreeNode<int>* LCAinaBST(TreeNode<int>* root, TreeNode<int>* p, TreeNode<int>* q)
+// {
+//     while(root)
+//     {
+//         if(p->data < root->data && q->data<root->data)
+//             root=root->left;
+//         else if(p->data > root->data && q->data > root->data)
+//             root=root->right;
+//         else return root;
+//     }
+//         return NULL;
+// }
+
 
 TreeNode<int>* LCAinaBST(TreeNode<int>* root, TreeNode<int>* p, TreeNode<int>* q)
 {
