@@ -20,8 +20,7 @@
 
 int floorInBST(TreeNode<int> * root, int x)
 {
-    if(root==NULL) return 0;
-    int floor=0;
+    int floor=-1;
     
     while(root)
     {
