@@ -1,5 +1,5 @@
 #include<queue>
-bool bfs_bipartite(int node,vector<int> adj[],vector<int> &color)
+bool bfs_bipartite(int node,vector<vector<int>> &edges,vector<int> &color)
 {
     color[node]=0;
     queue<int> q;
@@ -10,27 +10,30 @@ bool bfs_bipartite(int node,vector<int> adj[],vector<int> &color)
         int n=q.front();
         q.pop();
         
-        for(auto it:adj[n])
+        for(int i=0;i<edges.size();i++)
         {
-            if(color[it]==-1) 
+            if(edges[n][i]==1)
             {
-                color[it]=!color[n];
-                q.push(it);
+                if(color[i]==-1) 
+                {
+                    color[i]=!color[n];
+                    q.push(i);
+                }
+                else if(color[i]==color[n]) return false;
             }
-            else if(color[it]==color[n]) return false;
         }
     }
     return true;
 }
 
-bool check_bipartite(vector<int> adj[],int n)
+bool check_bipartite(vector<vector<int>> &edges,int n)
 {
     vector<int> color(n,-1);
     for(int i=0;i<n;i++)
     {
         if(color[i]==-1)
         {
-            if(!bfs_bipartite(i,adj,color)) return false;
+            if(!bfs_bipartite(i,edges,color)) return false;
         }
     }
     return true;
@@ -40,19 +43,7 @@ bool isGraphBirpatite(vector<vector<int>> &edges) {
     int n = edges.size();
 	vector<int> adj[n];
     
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            if(edges[i][j]==1) 
-            {
-                adj[i].push_back(j);
-                adj[j].push_back(i);
-            }
-        }
-    }
-    
-    if(check_bipartite(adj,n)) return true;
+    if(check_bipartite(edges,n)) return true;
     return false;
     
 }
