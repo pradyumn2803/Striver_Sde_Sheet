@@ -42,6 +42,7 @@ public:
         node* nnext=n->next;
         prevn->next=n->next;
         nnext->prev=n->prev;
+        size--;
     }
 };
 
