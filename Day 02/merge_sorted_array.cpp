@@ -1,4 +1,5 @@
 // Approach 1
+// insertion sort method
 
 vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, int n) {
 	// Write your code here.
@@ -11,7 +12,11 @@ vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, in
 			if(arr1[i]>arr2[0])
 			{
 				swap(arr1[i],arr2[0]);
-				sort(arr2.begin(),arr2.end());
+				int j=1;
+                while(j<n){
+                    if(arr2[j]<arr2[j-1]) swap(arr2[j],arr2[j-1]);
+                    j++;
+                }
 			}
 			i++;
 		}
